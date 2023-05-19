@@ -5,6 +5,7 @@ import { z } from "zod";
 import { prisma } from "../lib/prisma";
 export async function authRoutes(app: FastifyInstance) {
   app.post("/register", async (request) => {
+    console.log("chegou");
     const bodySchema = z.object({
       code: z.string(),
     });
