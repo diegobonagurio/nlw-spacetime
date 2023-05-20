@@ -4,14 +4,14 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
 import * as SecureStore from "expo-secure-store";
 
-import NLWLogo from "../src/assets/nlw-spacetime-logo.svg";
+import NLWLogo from "../src/assets/logo.svg";
 import { api } from "../src/lib/api";
 
 const discovery = {
   authorizationEndpoint: "https://github.com/login/oauth/authorize",
   tokenEndpoint: "https://github.com/login/oauth/access_token",
   revocationEndpoint:
-    "https://github.com/settings/connections/applications/d26f194cc5d5132a51be",
+    "https://github.com/settings/connections/applications/f278bdab31f5d3fcc559",
 };
 
 export default function App() {
@@ -19,7 +19,7 @@ export default function App() {
 
   const [, response, signInWithGithub] = useAuthRequest(
     {
-      clientId: "d26f194cc5d5132a51be",
+      clientId: "f278bdab31f5d3fcc559",
       scopes: ["identity"],
       redirectUri: makeRedirectUri({
         scheme: "nlwspacetime",
@@ -41,12 +41,12 @@ export default function App() {
   }
 
   useEffect(() => {
-    // console.log(
-    //   'response',
-    //   makeRedirectUri({
-    //     scheme: 'nlwspacetime',
-    //   }),
-    // )
+    console.log(
+      "response",
+      makeRedirectUri({
+        scheme: "nlwspacetime",
+      })
+    );
 
     if (response?.type === "success") {
       const { code } = response.params;
